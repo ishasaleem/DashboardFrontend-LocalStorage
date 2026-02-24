@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
+import ProductManagement from './pages/ProductManagement';
+import AddEditProduct from './pages/AddEditProduct';
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+
+      <div className="md:ml-64">
+        <Navbar setIsOpen={setIsOpen} />
+
+        <div className="p-4">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/products" element={<ProductManagement />} />
+            <Route path="/products/add" element={<AddEditProduct />} />
+            <Route path="/products/edit/:id" element={<AddEditProduct />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
