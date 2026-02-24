@@ -27,11 +27,9 @@ Git & GitHub
 
 Clone the repository:
 
-git clone https://github.com/your-username/your-repo.git
+git clone (https://github.com/ishasaleem/DashboardFrontend-LocalStorage)
 
 Navigate to project folder:
-
-cd your-repo
 
 Install dependencies:
 
